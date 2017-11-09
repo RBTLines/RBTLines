@@ -1,12 +1,6 @@
 const router = require('express').Router();
 const Twitter = require('twitter-node-client').Twitter;
-
-const config = {
-  consumerKey: '5YSpaAYbEdibnc5WAHsz9IcNL',
-  consumerSecret:  'd2qT9b9KMs6eRoldregLoPNel0AQNKuXkEEfUJkRh8g4jLwBjM',
-  accessToken: '583897464-m55CjcyWHYy7iqA1htxl4Z6id86TRPPpgXrzLs8z',
-  accessTokenSecret: 'PnbQoHTrhUnLmEil6iGnYB6B6Bqzqqz3O8as22EyMDZT6',
-}
+const config = require('../../secrets');
 
 const twitter = new Twitter(config);
 
