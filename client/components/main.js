@@ -15,24 +15,20 @@ const Main = (props) => {
 
   return (
     <div>
-      <h1>Changing main</h1>
-      <nav>
-        {
-          isLoggedIn
-            ? <div>
-              {/* The navbar will show these links after you log in */}
-              <Link to="/home">Home</Link>
-              <a href="#" onClick={handleClick}>Logout</a>
-            </div>
-            : <div>
-              {/* The navbar will show these links before you log in */}
-              <Link to="/login">Login</Link>
-              <Link to="/signup">Sign Up</Link>
-            </div>
-        }
-      </nav>
-      <hr />
-      {children}
+      <h1 className="title is-1 level-item hast-text-centered">BOILERMAKER</h1>
+        <div className="field">
+        <label className="label">Username</label>
+        <div className="control has-icons-left has-icons-right">
+          <input className="input is-success" type="text" placeholder="Text input" value="bulma"/>
+          <span className="icon is-small is-left">
+            <i className="fa fa-user"></i>
+          </span>
+          <span className="icon is-small is-right">
+            <i className="fa fa-check"></i>
+          </span>
+        </div>
+        <p className="help is-success">This username is available</p>
+      </div>
     </div>
   )
 }
