@@ -33,7 +33,7 @@ export default class Main extends Component {
           <div className="field">
           <label className="label">Enter a Twitter handle to analyze:</label>
           <div className="control has-icons-left has-icons-right">
-            <input onChange={this.handleChange} className="input is-success" type="text" placeholder="Text input" value={this.inputValue}/>
+            <input onChange={this.handleChange} className="input is-success" type="text" placeholder="Text input" value={this.inputValue} />
             <span className="icon is-small is-left">
               <i className="fa fa-user"></i>
             </span>
@@ -41,7 +41,7 @@ export default class Main extends Component {
               <i className="fa fa-check"></i>
             </span>
           </div>
-          <Link to="/tweet_sentiment" className="button is-info" onClick={() => this.props.getHandle(this.state.inputValue)}>Submit</Link>
+          <Link to={`/tweet_sentiment/${this.state.inputValue}`} className="button is-info" onClick={() => this.props.getHandle(this.state.inputValue)}>Submit</Link>
         </div>
       </div>
     )
