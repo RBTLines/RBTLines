@@ -21,6 +21,7 @@ export default class TweetSentiment extends Component {
 
 
     render () {
+      console.log("this is the twitter sentiment component ", this.props)
       return (
         <div >
           <h1>Our render test</h1>
