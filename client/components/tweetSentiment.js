@@ -11,13 +11,14 @@ export default class TweetSentiment extends Component {
 
     }
 
-    // componentDidMount () {
-    //   axios.get('/api/songs')
-    //     .then(res => res.data)
-    //     .then(songs => {
-    //       this.setState({ songs });
-    //     });
-    // }
+    componentDidMount () {
+      axios.get(`/api/tweets/${this.props.twitterHandle}`)
+        .then(res => res.data)
+        .then(tweets => {
+          console.log(tweets);
+          //this.setState(tweets);
+        });
+    }
 
 
     render () {

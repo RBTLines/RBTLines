@@ -6,7 +6,9 @@ const twitter = new Twitter(config);
 
 module.exports = router;
 
-router.get('/', (req, res, next) => {
+router.get('/:twitterHandle', (req, res, next) => {
+  const twitterHandle = req.params.twitterHandle;
+  console.log('this is the value of twitterHandle on the get request ', twitterHandle)
   const error = (err, res, body) => {
     console.log(err);
   }
@@ -15,5 +17,5 @@ router.get('/', (req, res, next) => {
     res.json(JSON.parse(data))
   }
 
-  twitter.getUserTimeline({screen_name: 'realDonaldTrump', count: '25'}, error, success)
+  twitter.getUserTimeline({screen_name: twitterHandle, count: '25'}, error, success)
 })
