@@ -28,7 +28,6 @@ class Routes extends Component {
 
   getHandle (tweets) {
     this.setState({handle: tweets})
-    console.log('this is the route.js file', this.state)
   }
 
   render () {
