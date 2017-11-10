@@ -16,8 +16,10 @@ class Routes extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      handle: '',
       tweets: []
     }
+    this.getHandle = this.getHandle.bind(this)
   }
 
   componentDidMount () {
@@ -25,20 +27,22 @@ class Routes extends Component {
   }
 
   getHandle (tweets) {
-
+    this.setState({handle: tweets})
+    console.log('this is the route.js file', this.state)
   }
 
   render () {
-    const {isLoggedIn} = this.props
 
+    const {isLoggedIn} = this.props
+    //getHandle('get handle working')
     return (
       <Router history={history}>
           <Switch>
               {/* Routes placed here are available to all visitors */}
-              <Route exact path="/" render={() => <Main getHandle={this.getHandle} />} />
+              <Route exact path="/" render={() => <Main getHandle={this.getHandle.bind(this)} />} />
               <Route path="/login" component={Login} />
               <Route path="/signup" component={Signup} />
-              <Route path="/tweet_sentiment" render={() => <TweetSentiment twitterHandle={this.props.twitterHandle} />} />
+              <Route path="/tweet_sentiment" render={() => <TweetSentiment twitterHandle={this.state.handle} />} />
               {/* Displays our Login component as a fallback */}
               <Route component={Login} />
           </Switch>

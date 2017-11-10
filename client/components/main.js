@@ -27,15 +27,13 @@ export default class Main extends Component {
   }
 
   render(){
-    //const {children, handleClick, isLoggedIn} = props
-
     return (
       <div>
         <h1 className="title is-1 level-item hast-text-centered">Read Between the Lines</h1>
           <div className="field">
           <label className="label">Enter a Twitter handle to analyze:</label>
           <div className="control has-icons-left has-icons-right">
-            <input onChange={this.handleChange} className="input is-success" type="text" placeholder="Text input" value={this.inputValue} />
+            <input onChange={this.handleChange} className="input is-success" type="text" placeholder="Text input" value={this.inputValue}/>
             <span className="icon is-small is-left">
               <i className="fa fa-user"></i>
             </span>
@@ -43,39 +41,9 @@ export default class Main extends Component {
               <i className="fa fa-check"></i>
             </span>
           </div>
-          <Link to="/tweet_sentiment" className="button is-info">Submit</Link>
+          <Link to="/tweet_sentiment" className="button is-info" onClick={() => this.props.getHandle(this.state.inputValue)}>Submit</Link>
         </div>
       </div>
     )
   }
 }
-
-/**
- * CONTAINER
- */
-// const mapState = (state) => {
-//   return {
-//     isLoggedIn: !!state.user.id
-//   }
-// }
-
-// const mapDispatch = (dispatch) => {
-//   return {
-//     handleClick () {
-//       dispatch(logout())
-//     }
-//   }
-// }
-
-// The `withRouter` wrapper makes sure that updates are not blocked
-// when the url changes
-//export default withRouter(connect(mapState, mapDispatch)(Main))
-
-/**
- * PROP TYPES
- */
-// Main.propTypes = {
-//   children: PropTypes.object,
-//   handleClick: PropTypes.func.isRequired,
-//   isLoggedIn: PropTypes.bool.isRequired
-// }
