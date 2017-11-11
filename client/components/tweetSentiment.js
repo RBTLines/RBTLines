@@ -22,12 +22,9 @@ export default class TweetSentiment extends Component {
         });
     }
 
-    tweetAnalyzer (tweets) {
-
-    }
 
     render() {
-      let analyzer = '';
+      let tweetString = '';
       console.log(this.state)
       return (
           <div>
@@ -37,7 +34,7 @@ export default class TweetSentiment extends Component {
               this.state.tweets.length ? <h3>{this.state.tweets[0].user.screen_name}</h3> : <h3>Loading</h3>
             }
             {this.state.tweets && this.state.tweets.map( tweet =>
-              {analyzer = analyzer + ' ' + tweet.text
+              {tweetString = tweetString + ' ' + tweet.text
               return (
                 <article className="media" key={tweet.id}>
                 <figure className="media-left">
@@ -62,7 +59,9 @@ export default class TweetSentiment extends Component {
             }
             </div>
             <div className="column is-6">
-              <TweetAnalyzer analyzer={analyzer} />
+              {
+                this.state.tweets.length ? <TweetAnalyzer tweetString={tweetString} numTweets={this.state.tweets.length} /> : <h3>Loading</h3>
+              }
             </div>
           </div>
           </div>
