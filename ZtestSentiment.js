@@ -1,4 +1,18 @@
-const sentiment = require('sentiment');
+const fleschKinkaid = require('flesch-kincaid');
+const syllable = require('syllable');
 
-const r1 = sentiment('On behalf of an entire nation, Happy 242nd Birthday to the men and women of the United States Marines! #USMC242… https://t.co/EDmzIuB09r');
-console.log('this is the analysis!!!!!!!!!!!!', r1);
+const sentence = syllable('If bad behavior by a flamboyantly “religious” man surprises you, you have amnesia');
+console.log(sentence);
+
+console.log(fleschKinkaid({
+  sentence: 1,
+  word: 13,
+  syllable: sentence
+}))
+
+
+
+
+
+
+

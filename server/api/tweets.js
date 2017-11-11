@@ -17,5 +17,5 @@ router.get('/:twitterHandle', (req, res, next) => {
     res.json(JSON.parse(data))
   }
 
-  twitter.getUserTimeline({screen_name: twitterHandle, count: '25'}, error, success)
+  twitter.getUserTimeline({screen_name: twitterHandle, count: '100'}, error, success)
 })
