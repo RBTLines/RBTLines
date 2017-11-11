@@ -1,4 +1,6 @@
 import React from 'react';
+
+
 const sentiment = require('sentiment');
 const fleschKincaid = require('flesch-kincaid');
 const syllable = require('syllable');
@@ -50,6 +52,7 @@ const TweetAnalyzer  = (props) => {
 
   return (
     <div className= "container">
+
       {`${emotion} rating: ${comparative}`}
       <br />
       {`comp rating: ${analysis.comparative}`}

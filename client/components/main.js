@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import {withRouter, Link} from 'react-router-dom'
 import {logout} from '../store'
-
+import Navbar from './navbar'
 /**
  * COMPONENT
  *  The Main component is our 'picture frame' - it displays the navbar and anything
@@ -29,7 +29,7 @@ export default class Main extends Component {
   render(){
     return (
       <div>
-        <h1 className="title is-1 level-item hast-text-centered">Read Between the Lines</h1>
+
           <div className="field">
           <label className="label">Enter a Twitter handle to analyze:</label>
           <div className="control has-icons-left has-icons-right">
@@ -43,6 +43,7 @@ export default class Main extends Component {
           </div>
           <Link to={`/tweet_sentiment/${this.state.inputValue}`} className="button is-info" onClick={() => this.props.getHandle(this.state.inputValue)}>Submit</Link>
         </div>
+        <Navbar />
       </div>
     )
   }

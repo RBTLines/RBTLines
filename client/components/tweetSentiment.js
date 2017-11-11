@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import TweetAnalyzer from './tweetAnalyzer'
-
+import {Circle} from 'better-react-spinkit'
+import Main from './main'
 
 export default class TweetSentiment extends Component {
 
@@ -13,8 +14,10 @@ export default class TweetSentiment extends Component {
 
     }
 
+
     componentDidMount () {
-      axios.get(`/api/tweets/${this.props.twitterHandle}`)
+      const urlParam = window.location.href.split('/');
+      axios.get(`/api/tweets/${urlParam[urlParam.length - 1]}`)
         .then(res => res.data)
         .then(tweets => {
           console.log('These are the tweets ', tweets);
@@ -25,13 +28,13 @@ export default class TweetSentiment extends Component {
 
     render() {
       let tweetString = '';
-      console.log(this.state)
       return (
           <div>
+          <Main />
             <div className="columns">
             <div className="column is-6">
             {
-              this.state.tweets.length ? <h3>{this.state.tweets[0].user.screen_name}</h3> : <h3>Loading</h3>
+              this.state.tweets.length ? <h3>{this.state.tweets[0].user.screen_name}</h3> : <Circle size={50} color="blue" />
             }
             {this.state.tweets && this.state.tweets.map( tweet =>
               {tweetString = tweetString + ' ' + tweet.text
@@ -60,7 +63,7 @@ export default class TweetSentiment extends Component {
             </div>
             <div className="column is-6">
               {
-                this.state.tweets.length ? <TweetAnalyzer tweetString={tweetString} numTweets={this.state.tweets.length} /> : <h3>Loading</h3>
+                this.state.tweets.length ? <TweetAnalyzer tweetString={tweetString} numTweets={this.state.tweets.length} /> : <Circle size={50} color="blue" />
               }
             </div>
           </div>

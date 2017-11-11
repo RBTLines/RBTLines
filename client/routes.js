@@ -9,6 +9,7 @@ import Main from './components/main'
 import {me} from './store'
 import TweetSentiment from './components/tweetSentiment'
 
+
 /**
  * COMPONENT
  */
@@ -35,6 +36,7 @@ class Routes extends Component {
     const {isLoggedIn} = this.props
     //getHandle('get handle working')
     return (
+
       <Router history={history}>
           <Switch>
               {/* Routes placed here are available to all visitors */}
