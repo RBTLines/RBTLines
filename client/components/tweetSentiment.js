@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import TweetAnalyzer from './tweetAnalyzer'
+
 
 export default class TweetSentiment extends Component {
 
@@ -20,7 +22,12 @@ export default class TweetSentiment extends Component {
         });
     }
 
+    tweetAnalyzer (tweets) {
+
+    }
+
     render() {
+      let analyzer = '';
       console.log(this.state)
       return (
           <div>
@@ -30,8 +37,8 @@ export default class TweetSentiment extends Component {
               this.state.tweets.length ? <h3>{this.state.tweets[0].user.screen_name}</h3> : <h3>Loading</h3>
             }
             {this.state.tweets && this.state.tweets.map( tweet =>
-              (
-
+              {analyzer = analyzer + ' ' + tweet.text
+              return (
                 <article className="media" key={tweet.id}>
                 <figure className="media-left">
                   <p className="image is-64x64">
@@ -49,12 +56,14 @@ export default class TweetSentiment extends Component {
                 </div>
                 </article>
 
-              )
+              )}
             )
 
             }
             </div>
-            <div className="column is-6">Auto</div>
+            <div className="column is-6">
+              <TweetAnalyzer analyzer={analyzer} />
+            </div>
           </div>
           </div>
         )
