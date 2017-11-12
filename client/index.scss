@@ -21,7 +21,28 @@ body {
 }
 
 .field {
-  width: 25em;
+  width: 125em;
   padding: 1em;
 }
 
+.loader {
+  margin: auto;
+  display: flex;
+  justify-content: center;
+}
+
+.user-image {
+  height: 7em;
+  width: 7em;
+}
+
+.color {
+  background-color: blue;
+  height: 100vh;
+  color: white;
+}
+
+.thinking-man {
+  height: 17em;
+  width: 20em;
+}

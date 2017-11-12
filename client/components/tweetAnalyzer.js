@@ -7,7 +7,6 @@ const syllable = require('syllable');
 
 const TweetAnalyzer  = (props) => {
   //sentiment(props.analyzer.score
-  console.log(props.numTweets);
   const analysis = sentiment(props.tweetString);
   const comparative = Math.floor(analysis.comparative * 1000);
   let emotion = '';
@@ -46,23 +45,23 @@ const TweetAnalyzer  = (props) => {
     syllable: syllableCount
   }))
 
-  console.log('wordCount: ', wordCount, 'syllableCount', syllableCount, 'sentenceCount', sentenceCount, 'incoming text', props.tweetString);
-
-  console.log('!!!!!!!!!!!!!!!!', analysis.tokens)
 
   return (
     <div className= "container">
-
-      {`${emotion} rating: ${comparative}`}
       <br />
-      {`comp rating: ${analysis.comparative}`}
+      {`Sentiment Scale Rating ====> [${comparative}].......${emotion}`}
       <br />
-      {`pos words: ${analysis.positive}`}
       <br />
-      {`neg words: ${analysis.negative}`}
+      {`Positive words ====> ${analysis.positive.join(', ').trim()}`}
       <br />
-      {`grade level: ${gradeLevel}`}
-
+      <br />
+      {`Negative words ====> ${analysis.negative.join(', ').trim()}`}
+      <br />
+      <br />
+      {`Relative Tweeting Grade Level ====> ${gradeLevel}`}
+      <br />
+      <br />
+      <h3>Most Recent Tweets: </h3>
     </div>
   )
 }

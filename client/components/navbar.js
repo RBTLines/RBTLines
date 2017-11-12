@@ -1,16 +1,20 @@
 import React from 'react';
-const sentiment = require('sentiment');
-const fleschKincaid = require('flesch-kincaid');
-const syllable = require('syllable');
+import Main from './main'
 
-const Navbar = (props) => {
+const Navbar = () => {
 
   return (
-    <nav className="navbar" role="navigation" aria-label="main navigation">
-    <div className="navbar-brand">
-      <h1 className="title is-1 level-item hast-text-centered">Read Between the Lines</h1>
+    <div>
+      <Main />
+      <div className="color">
+        <div className="container has-text-centered">
+          <h1 className="is-size-1">See what people are</h1>
+          <h1 className="is-size-1">REALLY</h1>
+          <h1 className="is-size-1">thinking when they tweet</h1>
+          <img className="thinking-man" src="https://cdn.worldvectorlogo.com/logos/twitter-4.svg" />
+        </div>
+      </div>
     </div>
-  </nav>
   )
 }
 

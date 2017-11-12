@@ -8,6 +8,7 @@ import {Login, Signup, UserHome} from './components'
 import Main from './components/main'
 import {me} from './store'
 import TweetSentiment from './components/tweetSentiment'
+import Navbar from './components/navbar'
 
 
 /**
@@ -40,12 +41,10 @@ class Routes extends Component {
       <Router history={history}>
           <Switch>
               {/* Routes placed here are available to all visitors */}
-              <Route exact path="/" render={() => <Main getHandle={this.getHandle.bind(this)} />} />
-              <Route path="/login" component={Login} />
-              <Route path="/signup" component={Signup} />
+              <Route exact path="/" render={() => <Navbar />} />
               <Route path="/tweet_sentiment" render={() => <TweetSentiment twitterHandle={this.state.handle} />} />
               {/* Displays our Login component as a fallback */}
-              <Route component={Login} />
+
           </Switch>
       </Router>
     )

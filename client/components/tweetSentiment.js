@@ -31,15 +31,23 @@ export default class TweetSentiment extends Component {
       return (
           <div>
           <Main />
-            <div className="columns">
-            <div className="column is-6">
             {
-              this.state.tweets.length ? <h3>{this.state.tweets[0].user.screen_name}</h3> : <Circle size={50} color="blue" />
+              this.state.tweets.length ?
+                <div className="has-text-centered">
+                  <img className="user-image" src={this.state.tweets[0].user.profile_image_url} />
+                  <h3 className="is-size-1" >{this.state.tweets[0].user.name}</h3>
+                  <h2 className="is-size-6">`"{this.state.tweets[0].user.description}"`</h2>
+                </div>
+                : <div className="loader"><Circle size={50} color="blue" /></div>
             }
             {this.state.tweets && this.state.tweets.map( tweet =>
-              {tweetString = tweetString + ' ' + tweet.text
-              return (
-                <article className="media" key={tweet.id}>
+              {tweetString = tweetString + ' ' + tweet.text}
+            )}
+            {
+              this.state.tweets.length ? <TweetAnalyzer tweetString={tweetString} numTweets={this.state.tweets.length} /> : null
+            }
+            {this.state.tweets && this.state.tweets.map( tweet =>
+              (<article className="media" key={tweet.id}>
                 <figure className="media-left">
                   <p className="image is-64x64">
                     <img src={tweet.user.profile_image_url} />
@@ -55,18 +63,10 @@ export default class TweetSentiment extends Component {
                   </div>
                 </div>
                 </article>
-
-              )}
+              )
             )
 
             }
-            </div>
-            <div className="column is-6">
-              {
-                this.state.tweets.length ? <TweetAnalyzer tweetString={tweetString} numTweets={this.state.tweets.length} /> : <Circle size={50} color="blue" />
-              }
-            </div>
-          </div>
           </div>
         )
     }
