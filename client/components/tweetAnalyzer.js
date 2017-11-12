@@ -49,7 +49,9 @@ const TweetAnalyzer  = (props) => {
   return (
     <div className= "container">
       <br />
-      {`Sentiment Scale Rating ====> [${comparative}].......${emotion}`}
+      <div className="has-text-centered">
+        {`Sentiment Scale Rating ====> [${comparative}].......${emotion}`}
+      </div>
       <br />
       <br />
       {`Positive words ====> ${analysis.positive.join(', ').trim()}`}
