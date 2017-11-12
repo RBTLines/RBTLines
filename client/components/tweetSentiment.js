@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import TweetAnalyzer from './tweetAnalyzer'
-
+import {Circle} from 'better-react-spinkit'
+import Main from './main'
 
 export default class TweetSentiment extends Component {
 
@@ -13,8 +14,10 @@ export default class TweetSentiment extends Component {
 
     }
 
+
     componentDidMount () {
-      axios.get(`/api/tweets/${this.props.twitterHandle}`)
+      const urlParam = window.location.href.split('/');
+      axios.get(`/api/tweets/${urlParam[urlParam.length - 1]}`)
         .then(res => res.data)
         .then(tweets => {
           console.log('These are the tweets ', tweets);
@@ -25,18 +28,26 @@ export default class TweetSentiment extends Component {
 
     render() {
       let tweetString = '';
-      console.log(this.state)
       return (
           <div>
-            <div className="columns">
-            <div className="column is-6">
+          <Main />
             {
-              this.state.tweets.length ? <h3>{this.state.tweets[0].user.screen_name}</h3> : <h3>Loading</h3>
+              this.state.tweets.length ?
+                <div className="has-text-centered">
+                  <img className="user-image" src={this.state.tweets[0].user.profile_image_url} />
+                  <h3 className="is-size-1" >{this.state.tweets[0].user.name}</h3>
+                  <h2 className="is-size-6">`"{this.state.tweets[0].user.description}"`</h2>
+                </div>
+                : <div className="loader"><Circle size={50} color="blue" /></div>
             }
             {this.state.tweets && this.state.tweets.map( tweet =>
-              {tweetString = tweetString + ' ' + tweet.text
-              return (
-                <article className="media" key={tweet.id}>
+              {tweetString = tweetString + ' ' + tweet.text}
+            )}
+            {
+              this.state.tweets.length ? <TweetAnalyzer tweetString={tweetString} numTweets={this.state.tweets.length} /> : null
+            }
+            {this.state.tweets && this.state.tweets.map( tweet =>
+              (<article className="media" key={tweet.id}>
                 <figure className="media-left">
                   <p className="image is-64x64">
                     <img src={tweet.user.profile_image_url} />
@@ -52,18 +63,10 @@ export default class TweetSentiment extends Component {
                   </div>
                 </div>
                 </article>
-
-              )}
+              )
             )
 
             }
-            </div>
-            <div className="column is-6">
-              {
-                this.state.tweets.length ? <TweetAnalyzer tweetString={tweetString} numTweets={this.state.tweets.length} /> : <h3>Loading</h3>
-              }
-            </div>
-          </div>
           </div>
         )
     }
