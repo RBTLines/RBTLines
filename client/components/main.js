@@ -25,11 +25,11 @@ export default class Main extends Component {
 
   render(){
     return (
-
+      <div className="container">
       <nav className="navbar" role="navigation" aria-label="main navigation">
       <div className="navbar-brand">
-        <h1 className="title is-1 level-item hast-text-centered">Read Between the Lines</h1>
-        <div className="field has-addons">
+        <h1 className="title is-1 level-item">Read Between the Lines</h1>
+        <div className="field has-addons is-grouped">
           <div className="control has-icons-left has-icons-right">
             <input onChange={this.handleChange} className="input is-medium" type="text" placeholder="Enter a Twitter handle" value={this.inputValue} />
             <span className="icon is-small is-left">
@@ -40,11 +40,12 @@ export default class Main extends Component {
             </span>
           </div>
           <div className="control">
-          <Link to={`/tweet_sentiment/${this.state.inputValue}`} className="button is-info" onClick={() => this.props.getHandle(this.state.inputValue)}>Submit</Link>
+          <Link to={`/tweet_sentiment/${this.state.inputValue}`} className="button is-info " >Submit</Link>
           </div>
         </div>
       </div>
       </nav>
+      </div>
     )
   }
 }

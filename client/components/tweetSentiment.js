@@ -29,7 +29,7 @@ export default class TweetSentiment extends Component {
     render() {
       let tweetString = '';
       return (
-          <div>
+          <div className="container">
           <Main />
             {
               this.state.tweets.length ?
